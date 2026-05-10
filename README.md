@@ -82,7 +82,7 @@ Height = 120  / 720  = 0.167
 A data table row for this zone might be:
 
 
-| ReportPage | ZoneName | X | Y | Width | Height | CanvasHeight | CanvasWidth | VisualX | VisualY | VisualHeight | VisualWidth | Description | ZoneColor |
+| ReportPage | ZoneName | X | Y | Width | Height | CanvasHeight | CanvasWidth | PositionX | PositionY | VisualHeight | VisualWidth | Description | ZoneColor |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Main Page | Revenue Card | 0.250 | 0.125 | 0.156 | 0.167 | 720 | 1280 | 320 | 90 | 200 | 120 | Total revenue for the selected period | 118DFF |
 
@@ -95,8 +95,8 @@ A data table row for this zone might be:
 | Y | Decimal | Top edge of the overlay zone (0–1 fraction of canvas height) |
 | CanvasWidth | Decimal |  Effective overlay zone width |
 | CanvasHeight | Decimal | Effective overlay zone height |
-| VisualX | Decimal | Visual X Position on page|
-| VisalY | Decimal | Visual Y Position on page | 
+| PositionX | Decimal | Visual X Position on page |
+| PositionY | Decimal | Visual Y Position on page | 
 | VisualHeight | Decimal | Visual Height (Height in px of visual) |
 | VisualWidth | Decimal | Visual Width (Width in px of visual) |
 | Description | Text | Tooltip description text |
@@ -146,5 +146,6 @@ Alternatively, this can be accessed via multiple third party add ons that levera
 ## Tips and Gotchas
 
 - **Coordinates are relative to the visual, not the page** — the Hover Overlay visual itself must cover the area you want to detect. Size the visual to fill the page or the target area
+- **Remove Default padding, it will create an unexpected offset.
 
 ---
