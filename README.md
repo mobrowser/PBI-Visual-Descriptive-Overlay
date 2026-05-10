@@ -3,7 +3,7 @@ This is a Power BI visual that can be added to Power BI report as a standard vis
 
 ===========================================================
 
-# Hover Overlay — Power BI Custom Visual (V3)
+# Hover Overlay — Power BI Custom Visual
 
 A transparent canvas-based custom visual that draws a styled border and tooltip when a user hovers over defined hot zones on a Power BI report page. Zones are defined by a coordinate data table connected to the visual.
 
@@ -11,13 +11,13 @@ A transparent canvas-based custom visual that draws a styled border and tooltip 
 
 ## How It Works
 
-The visual is placed as a transparent overlay covering the full report page (or a section of it). It reads zone definitions from a Power BI data table — each row defines a rectangular zone by its position and size as fractions of the visual's dimensions. When the user hovers over a zone, a styled border and tooltip appear.
+The visual is placed as a transparent overlay covering the full report page (or a section of it). It reads zone definitions from a Power BI data table — each row defines a rectangular zone by its position and size of the visual's dimensions. When the user hovers over a zone, a styled border and tooltip appear.
 
 ---
 
 ## Coordinate System
 
-Coordinates are expressed on a scale **between 0 and 1**, relative to the visual's rendered width and height.
+Coordinates are expressed on a normalized scale **between 0 and 1**, relative to the visual's rendered width and height.
 
 | Value | Meaning |
 |---|---|
@@ -34,7 +34,7 @@ Coordinates are expressed on a scale **between 0 and 1**, relative to the visual
 | X | Decimal | Yes |  Visual X coordinate on page (0–1 fraction of canvas width) |
 | Y | Decimal | Yes | Visual Y coordinate on page (0–1 fraction of canvas height) |
 | Width | Decimal | Yes | Effective overlay zone width (0–1 fraction of canvas height) |
-| Height | Decimal | Yes | Effective overlay zone height in px (0–1 fraction of canvas height) |
+| Height | Decimal | Yes | Effective overlay zone height (0–1 fraction of canvas height) |
 | Description | Text | Yes | Tooltip description text | 
 | ZoneColor | Text | No | Optional hex color override per zone (e.g. `#118DFF`) |
 
@@ -45,25 +45,25 @@ Coordinates are expressed on a scale **between 0 and 1**, relative to the visual
 Calculating Coordinates requires a reference table on a per visual / page basis. Template file available as "Coordinate Template.csv"
 
 ```
-X      = PosX      / CanvasWidth
-Y      = PosY      / CanvasHeight
-Width  = VisualWidth  / CanvasWidth
-Height = VisualHeight / CanvasHeight
+X      = [VisualWidth] / [CanvasWidth]
+Y      = [VisualHeight] / [CanvasHeight]
+Width  = [VisualWidth]  / CanvasWidth
+Height = [VisualHeight] / CanvasHeight
 ```
 
 Where:
-- `PosX` / `PosY` — the visual's position in pixels, from **Format pane → General → Properties**
-- `VisualWidth` / `VisualHeight` — the visual's size in pixels, from the same Properties panel
-- `CanvasWidth` / `CanvasHeight` — the report page canvas size, from **View → Page size** (default: **1280 × 720**)
+- `X` / `Y` — the visual's coordinates in normal scale (0-1)
+- `Widgth` / `Height` — the canvas coordinates in normal scale (0-1)
+- `VisualWidth` / `VisualHeight` — the visual size in pixels
+- `CanvasWidth` / `CanvasHeight` — the report page canvas size in pixels
 
 ---
 
 ## Worked Example
 
 Using the default canvas size of 1280 × 720.
-Suppose you have a card visual with these properties (from Format → General → Properties):
 
-| Property | Value |
+| Visual Property | Value  in px|
 |---|---|
 | Position X | 320 |
 | Position Y | 90 |
@@ -79,25 +79,26 @@ Width  = 200  / 1280 = 0.156
 Height = 120  / 720  = 0.167
 ```
 
-The data table row for this zone would be:
-
-| ZoneName | X | Y | Width | Height | Description | ZoneColor |
-|---|---|---|---|---|---|---|---|
-| Main Page | Revenue Card | 0.250 | 0.125 | 0.156 | 0.167 | Total revenue for the selected period | 118DFF |
+A data table row for this zone might be:
 
 
-| Column | Type | Required | Description |
-|---|---|---|---|
-|ReportPage | Text | 
+| ReportPage | ZoneName | X | Y | Width | Height | CanvasHeight | CanvasWidth | VisualX | VisualY | VisualHeight | VisualWidth | Description | ZoneColor |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Main Page | Revenue Card | 0.250 | 0.125 | 0.156 | 0.167 | 720 | 1280 | 320 | 90 | 200 | 120 | Total revenue for the selected period | 118DFF |
+
+
+| Column | Type | Description |
+|---|---|---|
+|ReportPage | Text | Optional Report Page Name if the visual for filtering on multiple pages | 
 | ZoneName | Text | Display name shown in the tooltip header |
 | X | Decimal | Left edge of the overlay zone (0–1 fraction of canvas width) |
 | Y | Decimal | Top edge of the overlay zone (0–1 fraction of canvas height) |
 | CanvasWidth | Decimal |  Effective overlay zone width |
 | CanvasHeight | Decimal | Effective overlay zone height |
-| PosX | Decimal | Visual X Position on page|
-| PosY | Decimal | Visual Y Position on page | 
-| VisualWidth | Decimal | Visual Width (Width in px of visual) |
+| VisualX | Decimal | Visual X Position on page|
+| VisalY | Decimal | Visual Y Position on page | 
 | VisualHeight | Decimal | Visual Height (Height in px of visual) |
+| VisualWidth | Decimal | Visual Width (Width in px of visual) |
 | Description | Text | Tooltip description text |
 | ZoneColor | Text | Optional hex color override per zone (e.g. `#118DFF`) |
 
@@ -144,8 +145,6 @@ Alternatively, this can be accessed via multiple third party add ons that levera
 
 ## Tips and Gotchas
 
-- **Use Debug mode first** — turn on *Show all zones* to verify all zones are positioned correctly before sharing the report
 - **Coordinates are relative to the visual, not the page** — the Hover Overlay visual itself must cover the area you want to detect. Size the visual to fill the page or the target area
-- **Page size matters** — if your report uses a custom canvas size, use that size in the formula, not 1280 × 720
 
 ---
