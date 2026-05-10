@@ -1,6 +1,8 @@
-ReportPage,ZoneName,X,Y,Width,Height,Description,ZoneColor
-Overview,Revenue Card,0.250,0.125,0.156,0.167,Total revenue for the selected period,
-Overview,Units Card,0.450,0.125,0.156,0.167,Total units sold for the selected period,
-Overview,Margin Chart,0.100,0.350,0.400,0.300,Gross margin trend over the last 12 months,#118DFF
-Detail,Sales Table,0.050,0.200,0.900,0.500,Detailed sales breakdown by region and product,
-Detail,Filter Panel,0.050,0.050,0.200,0.100,Use these slicers to filter the report by date and region,
+ReportPage,ZoneName,CanvasHeight,CanvasWidth,PositionX,PositionY,VisualHeight,VisualWidth,Description,ZoneColor
+Overview,DateSlicer,720,1280,116,36,150,350,Misc Description 1,
+Overview,TimeSeries,720,1280,560,36,280,640,Misc Description 2,
+Overview,BarChart,720,1280,117,220,410,350,Misc Description 3,
+Overview,Matrix,720,1280,560,360,280,640,Misc Description 3,
+Visual Table,TextBox,720,1280,90,70,50,320,This is description used for the text box on the Visual Table Page,
+Visual Table,DataTable,720,1280,90,180,125,620,This is description used for the DataTable on the Visual Table Page,
+Visual Table,CalcTable,720,1280,750,180,125,380,This is description used for the second  DataTable showcasing the calculated columns on the Visual Table Page,
