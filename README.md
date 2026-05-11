@@ -3,6 +3,9 @@ This is a Power BI visual that can be added to Power BI report as a standard vis
 
 ===========================================================
 
+
+<img width="918" height="525" alt="image" src="https://github.com/user-attachments/assets/3244a9a6-3d5e-4b88-95b4-f44eb448c302" />
+
 # Hover Overlay — Power BI Custom Visual
 
 A transparent canvas-based custom visual that draws a styled border and tooltip when a user hovers over defined hot zones on a Power BI report page. Zones are defined by a coordinate data table connected to the visual. The coordinates of the visuals can be manually input or programatically generated to enable the display on the pages desired.
