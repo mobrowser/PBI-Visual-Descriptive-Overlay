@@ -5,7 +5,7 @@ This is a Power BI visual that can be added to Power BI report as a standard vis
 
 # Hover Overlay — Power BI Custom Visual
 
-A transparent canvas-based custom visual that draws a styled border and tooltip when a user hovers over defined hot zones on a Power BI report page. Zones are defined by a coordinate data table connected to the visual.
+A transparent canvas-based custom visual that draws a styled border and tooltip when a user hovers over defined hot zones on a Power BI report page. Zones are defined by a coordinate data table connected to the visual. The coordinates of the visuals can be manually input or programatically generated to enable the display on the pages desired.
 
 ---
 
@@ -42,7 +42,7 @@ Coordinates are expressed on a normalized scale **between 0 and 1**, relative to
 
 ### Formula
 
-Calculating Coordinates requires a reference table on a per visual / page basis. Template file available as "HoverOverlay_Template.csv".  Your model suggested to have listed calculated columns below.
+Calculating coordinates to generate the correct size squares over the visuals requires a reference table on a per visual basis. Template file available as "HoverOverlay_Template.csv".  Your model suggested to have listed calculated columns below to match the names on the property pane.
 
 ```
 X      = [VisualWidth] / [CanvasWidth]
@@ -65,12 +65,12 @@ Using the default canvas size of 1280 × 720.
 
 | Visual Property | Value  in px|
 |---|---|
-| Position X | 320 |
-| Position Y | 90 |
-| Width | 200 |
-| Height | 120 |
+| PositionX | 320 |
+| PositionY | 90 |
+| VisualWidth | 200 |
+| VisuLHeight | 120 |
 
-Calculate the zone coordinates:
+Calculate the zone coordinates for the visual :
 
 ```
 X      = 320  / 1280 = 0.250
