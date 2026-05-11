@@ -1,0 +1,70 @@
+{
+  "dataRoles": [
+    { "name": "zoneName",    "kind": "GroupingOrMeasure", "displayName": "Zone Name" },
+    { "name": "x",           "kind": "GroupingOrMeasure", "displayName": "X (0-1 fraction of width)" },
+    { "name": "y",           "kind": "GroupingOrMeasure", "displayName": "Y (0-1 fraction of height)" },
+    { "name": "zoneWidth",   "kind": "GroupingOrMeasure", "displayName": "Width (0-1 fraction of width)" },
+    { "name": "zoneHeight",  "kind": "GroupingOrMeasure", "displayName": "Height (0-1 fraction of height)" },
+    { "name": "description", "kind": "GroupingOrMeasure", "displayName": "Description" },
+    { "name": "zoneColor",   "kind": "GroupingOrMeasure", "displayName": "Zone Color (optional hex column)" }
+  ],
+  "dataViewMappings": [
+    {
+      "table": {
+        "rows": {
+          "select": [
+            { "for": { "in": "zoneName" } },
+            { "for": { "in": "x" } },
+            { "for": { "in": "y" } },
+            { "for": { "in": "zoneWidth" } },
+            { "for": { "in": "zoneHeight" } },
+            { "for": { "in": "description" } },
+            { "for": { "in": "zoneColor" } }
+          ]
+        }
+      }
+    }
+  ],
+  "objects": {
+    "general": {
+      "displayName": "General",
+      "properties": {
+        "enabled": { "displayName": "Enable overlay", "type": { "bool": true } }
+      }
+    },
+    "overlay": {
+      "displayName": "Border",
+      "properties": {
+        "borderColor":  { "displayName": "Color",                  "type": { "fill": { "solid": { "color": true } } } },
+        "borderWidth":  { "displayName": "Width (px)",             "type": { "numeric": true } },
+        "borderStyle":  { "displayName": "Style",                  "type": { "enumeration": [ { "value": "solid", "displayName": "Solid" }, { "value": "dashed", "displayName": "Dashed" }, { "value": "dotted", "displayName": "Dotted" } ] } },
+        "borderRadius": { "displayName": "Corner radius (px)",     "type": { "numeric": true } },
+        "padding":      { "displayName": "Frame padding (% of zone)", "type": { "numeric": true } },
+        "fillOpacity":  { "displayName": "Fill opacity (0-1)",     "type": { "numeric": true } },
+        "animate":      { "displayName": "Pulse animation",        "type": { "bool": true } }
+      }
+    },
+    "tooltip": {
+      "displayName": "Tooltip",
+      "properties": {
+        "background":     { "displayName": "Background color",  "type": { "fill": { "solid": { "color": true } } } },
+        "tooltipOpacity": { "displayName": "Opacity (0-1)",     "type": { "numeric": true } },
+        "textColor":      { "displayName": "Text color",        "type": { "fill": { "solid": { "color": true } } } },
+        "fontSize":       { "displayName": "Font size (px)",    "type": { "numeric": true } },
+        "maxWidth":       { "displayName": "Max width (px)",    "type": { "numeric": true } },
+        "position":       { "displayName": "Position",          "type": { "enumeration": [ { "value": "follow", "displayName": "Follow cursor" }, { "value": "above", "displayName": "Above zone" }, { "value": "below", "displayName": "Below zone" } ] } },
+        "showZoneName":   { "displayName": "Show zone name",   "type": { "bool": true } },
+        "labelColor":     { "displayName": "Label color",       "type": { "fill": { "solid": { "color": true } } } },
+        "labelFontSize":  { "displayName": "Label font size (px)", "type": { "numeric": true } }
+      }
+    },
+    "debug": {
+      "displayName": "Debug",
+      "properties": {
+        "showAllZones": { "displayName": "Show all zones", "type": { "bool": true } }
+      }
+    }
+  },
+  "supportsHighlight": false,
+  "privileges": []
+}

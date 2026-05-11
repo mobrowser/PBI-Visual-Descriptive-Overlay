@@ -1,0 +1,25 @@
+{
+  "visual": {
+    "name": "HoverOverlay",
+    "displayName": "Hover Overlay",
+    "guid": "HoverOverlay1234567890",
+    "visualClassName": "Visual",
+    "version": "1.0.0.0",
+    "description": "Transparent overlay that draws a styled border and tooltip on hover over defined hot zones.",
+    "supportUrl": "https://www.example.com",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "5.3.0",
+  "author": {
+    "name": "Your Name",
+    "email": "your@email.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": []
+}
