@@ -42,13 +42,13 @@ Coordinates are expressed on a normalized scale **between 0 and 1**, relative to
 
 ### Formula
 
-Calculating Coordinates requires a reference table on a per visual / page basis. Template file available as "Coordinate Template.csv"
+Calculating Coordinates requires a reference table on a per visual / page basis. Template file available as "HoverOverlay_Template.csv".  Your model suggested to have listed calculated columns below.
 
 ```
 X      = [VisualWidth] / [CanvasWidth]
 Y      = [VisualHeight] / [CanvasHeight]
-Width  = [VisualWidth]  / CanvasWidth
-Height = [VisualHeight] / CanvasHeight
+Width  = [VisualWidth]  / [CanvasWidth]
+Height = [VisualHeight] / [CanvasHeight]
 ```
 
 Where:
@@ -147,5 +147,7 @@ Alternatively, this can be accessed via multiple third party add ons that levera
 
 - **Coordinates are relative to the visual, not the page** — the Hover Overlay visual itself must cover the area you want to detect. Size the visual to fill the page or the target area
 - **Remove Default padding, it will create an unexpected offset.
+- **Visual Coordinates and Canvas dimensions should be systemically extracted for ease of use and automation for any project of scale.  
+- **Offsets should be used for overlays not covering the entire canvas.
 
 ---
